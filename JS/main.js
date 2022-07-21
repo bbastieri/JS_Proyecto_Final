@@ -24,6 +24,7 @@ function agregarAlCarrito (producto){
     console.log(carritoCompras)
 }
 /* PRODUCTOS AGREGADOS */
+
 agregarAlCarrito(producto2);
 agregarAlCarrito(producto3);
 agregarAlCarrito(producto5);
@@ -43,6 +44,35 @@ borrarDelCarrito(5);
 /* SUMAR PRECIOS */
 const totalCarrito = carritoCompras.reduce ((acumulador,item) => acumulador + item.precio, 0)
 console.log (totalCarrito)
+
+//* MEDIOS DE PAGO */ 
+const mediosDePago = [
+    {ident: 1, medio: "MercadoPago", descuento: 0},
+    {ident: 2, medio: "Transferencia Bancaria", descuento: 0.1},
+    {ident: 3, medio: "Depósito Bancario", descuento: 0.1},  
+    ]
+
+/* ELEGIR MEDIO DE PAGO */
+function elegirMedioDePago (){
+    let medioDePago; 
+    do{
+    const elegirMedio = parseInt (prompt("Para elegir cómo pagar, debés ingresar 1 por MercadoPago, 2 para Transferencia y 3 para depósito!"));
+    console.log (elegirMedio);
+    medioDePago = mediosDePago.find(medio => medio.ident === elegirMedio);
+    } while (medioDePago === undefined)
+      return medioDePago
+}
+
+const medioDePago = elegirMedioDePago ();
+console.log(medioDePago);
+
+/* Para próximas entregas:
+   - Opción de elegir talles
+   - Verificar stock
+   - Buscador
+   - Calculadora de descuento
+   */
+
 
 
 
