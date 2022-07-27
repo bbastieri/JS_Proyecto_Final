@@ -53,7 +53,7 @@ const mediosDePago = [
     ]
 
 /* ELEGIR MEDIO DE PAGO */
-function elegirMedioDePago (){
+/* function elegirMedioDePago (){
     let medioDePago; 
     do{
     const elegirMedio = parseInt (prompt("Para elegir cómo pagar, debés ingresar 1 por MercadoPago, 2 para Transferencia y 3 para depósito!"));
@@ -61,10 +61,10 @@ function elegirMedioDePago (){
     medioDePago = mediosDePago.find(medio => medio.ident === elegirMedio);
     } while (medioDePago === undefined)
       return medioDePago
-}
+} */
 
-const medioDePago = elegirMedioDePago ();
-console.log(medioDePago);
+/* const medioDePago = elegirMedioDePago ();
+console.log(medioDePago); */
 
 /* Para próximas entregas:
    - Opción de elegir talles
