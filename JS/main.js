@@ -22,14 +22,15 @@ const producto6 = new producto (6, "Medias Ying Yang", 800)
 const productosEnStock = [producto1, producto2, producto3, producto4, producto5, producto6]
 
 /* AGREGAR PRODUCTOS */
-function agregarAlCarrito (productosEnStock){
+function agregarAlCarrito (){
     let agregoAlCarrito;
     do {
     const elegirProducto = parseInt (prompt ("Ingresá código para agregar al carrito: 1) Top Olimpia, 2) Corpiño Heavy Metal, 3) Bombi Heavy Metal, 4) Portaligas Rebel, 5) Body Cherry Bomb, 6) Medias Ying Yang"));
     console.log (elegirProducto);
-    agregoAlCarrito = productosEnStock.find(id => id.ident === agregoAlCarrito);  
-    carritoCompras.push(productosEnStock);
-    console.log(carritoCompras);  
+    agregoAlCarrito = productosEnStock.find(producto => producto.id === elegirProducto); 
+    console.log ("El producto es: ", agregoAlCarrito);
+/*     carritoCompras.push(productosEnStock);
+    console.log(carritoCompras);  */ 
     } while (agregoAlCarrito === undefined)
     return agregoAlCarrito    
 }
