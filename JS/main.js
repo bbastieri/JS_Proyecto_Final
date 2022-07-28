@@ -1,25 +1,27 @@
 /* ARRAY */
 const carritoCompras = []
 
-/* CONSTRUCTOR */
-class producto {
-    constructor (id, nombre, precio){
-        this.id = id;
-        this.nombre= nombre;
-        this.precio= precio;
-    }    
-}
+/* STOCK */
+const productosEnStock = [
+    {id:1, nombre:"Top Olimpia", precio:3000},
+    {id:2, nombre:"Corpiño Heavy Metal", precio:2500},
+    {id:3, nombre:"Heavy Metal", precio:1700},
+    {id:4, nombre:"Portaligas Rebel", precio:2000},
+    {id:5, nombre:"Body Cherry Bomb", precio:3500},
+    {id:6, nombre:"Medias Ying Yang", precio:800},
+];
 
-/* OBJETOS */
-const producto1 = new producto (1, "Top Olimpia", 3000)
-const producto2 = new producto (2, "Corpiño Heavy Metal", 2500)
-const producto3 = new producto (3, "Bombi Heavy Metal", 1700)
-const producto4 = new producto (4, "Portaligas Rebel", 2000)
-const producto5 = new producto (5, "Body Cherry Bomb", 3500)
-const producto6 = new producto (6, "Medias Ying Yang", 800)
+/* CARDS */
+let cards= "";
 
-/*  */
-const productosEnStock = [producto1, producto2, producto3, producto4, producto5, producto6]
+productosEnStock.forEach ((producto) => {
+    cards+= "<div class='card d-flex'><h2>"+producto.nombre+"</h2><button>Agregar al carrito</button></div>"
+});
+
+/* document.write(cards); */
+document.getElementById("cardsProductos").innerHTML = cards;
+
+
 
 /* AGREGAR PRODUCTOS */
 function agregarAlCarrito (){
@@ -29,8 +31,8 @@ function agregarAlCarrito (){
     console.log (elegirProducto);
     agregoAlCarrito = productosEnStock.find(producto => producto.id === elegirProducto); 
     console.log ("El producto es: ", agregoAlCarrito);
-/*     carritoCompras.push(productosEnStock);
-    console.log(carritoCompras);  */ 
+    carritoCompras.push(agregoAlCarrito);
+    console.log(carritoCompras);
     } while (agregoAlCarrito === undefined)
     return agregoAlCarrito    
 }
