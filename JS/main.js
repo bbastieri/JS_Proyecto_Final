@@ -16,33 +16,23 @@ const productosEnStock = [
 let cards= "";
 
 productosEnStock.forEach ((producto) => {
+    const idBoton=`add-cart${producto.id}` 
     cards+=`<div>
             <img src='${producto.imagen}' class="imagenCards">
             <h2>${producto.nombre}</h2>
             <h4>${producto.precio}</h4>
-            <button onclick='agregarAlCarrito()'>Agregar al carrito</button>
+            <button id="${idBoton}">Agregar al carrito</button>
             <div>`
 });
 
 document.getElementById("cardsProductos").innerHTML = cards;
 
-
-/* AGREGAR PRODUCTOS */
-function agregarAlCarrito (){
-    let agregoAlCarrito;
-    do {
-    const elegirProducto = parseInt (prompt ("Ingresá código para agregar al carrito: 1) Top Olimpia, 2) Corpiño Heavy Metal, 3) Bombi Heavy Metal, 4) Portaligas Rebel, 5) Body Cherry Bomb, 6) Medias Ying Yang"));
-    console.log (elegirProducto);
-    agregoAlCarrito = productosEnStock.find(producto => producto.id === elegirProducto); 
-    console.log ("El producto agregado es: ", agregoAlCarrito);
-    carritoCompras.push(agregoAlCarrito);
-    console.log(carritoCompras);
-    } while (agregoAlCarrito === undefined)
-    return agregoAlCarrito    
-}
-
-const agregoAlCarrito = agregarAlCarrito (productosEnStock);
-console.log (carritoCompras);
+productosEnStock.forEach((producto) =>{
+    const idBoton=`add-cart${producto.id}`
+    document.getElementById(idBoton).addEventListener('click', () => {
+        carritoCompras.push(producto)
+    })
+})
 
 
 /* BORRAR PRODUCTOS */
