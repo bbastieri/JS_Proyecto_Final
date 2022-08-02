@@ -134,7 +134,12 @@ i {
 #cardsProductos{
   width: 100%;
   font-size: 15px;
+  }
+
+.imagenCards{
+  height: 200px;
 }
+
 
 @media (min-width: 200px) and (max-width: 420px) {
   .tituloPagina h1 {
