@@ -3,9 +3,9 @@ const carritoCompras = []
 
 /* STOCK */
 const productosEnStock = [
-    {id:1, nombre:"Top Olimpia", precio:3000},
+    {id:1, nombre:"Top Olimpia", precio:3000, imagen:src=".../images/tops/top_olimpia"},
     {id:2, nombre:"Corpiño Heavy Metal", precio:2500},
-    {id:3, nombre:"Heavy Metal", precio:1700},
+    {id:3, nombre:"Bombi Heavy Metal", precio:1700},
     {id:4, nombre:"Portaligas Rebel", precio:2000},
     {id:5, nombre:"Body Cherry Bomb", precio:3500},
     {id:6, nombre:"Medias Ying Yang", precio:800},
@@ -15,12 +15,15 @@ const productosEnStock = [
 let cards= "";
 
 productosEnStock.forEach ((producto) => {
-    cards+= "<div class='card d-flex'><h2>"+producto.nombre+"</h2><button>Agregar al carrito</button></div>"
+    cards+=`<div>
+            <img src="${producto.imagen}">
+            <h2>${producto.nombre}</h2>
+            <h4>${producto.precio}</h4>
+            <button onclick='agregarAlCarrito("${producto.nombre}")'>Agregar al carrito</button>
+            <div>`
 });
 
-/* document.write(cards); */
 document.getElementById("cardsProductos").innerHTML = cards;
-
 
 
 /* AGREGAR PRODUCTOS */
@@ -30,7 +33,7 @@ function agregarAlCarrito (){
     const elegirProducto = parseInt (prompt ("Ingresá código para agregar al carrito: 1) Top Olimpia, 2) Corpiño Heavy Metal, 3) Bombi Heavy Metal, 4) Portaligas Rebel, 5) Body Cherry Bomb, 6) Medias Ying Yang"));
     console.log (elegirProducto);
     agregoAlCarrito = productosEnStock.find(producto => producto.id === elegirProducto); 
-    console.log ("El producto es: ", agregoAlCarrito);
+    console.log ("El producto agregado es: ", agregoAlCarrito);
     carritoCompras.push(agregoAlCarrito);
     console.log(carritoCompras);
     } while (agregoAlCarrito === undefined)
@@ -40,12 +43,6 @@ function agregarAlCarrito (){
 const agregoAlCarrito = agregarAlCarrito (productosEnStock);
 console.log (carritoCompras);
 
-/* PRODUCTOS AGREGADOS */ 
-
-/* agregarAlCarrito(producto2);
-agregarAlCarrito(producto3);
-agregarAlCarrito(producto5);
-agregarAlCarrito(producto6); */
 
 /* BORRAR PRODUCTOS */
 function borrarDelCarrito (numeroId){
@@ -59,7 +56,7 @@ function borrarDelCarrito (numeroId){
 borrarDelCarrito(5);
 
 /* SUMAR PRECIOS */
-const totalCarrito = carritoCompras.reduce ((acumulador,item) => acumulador + item.precio, 0)
+let totalCarrito = carritoCompras.reduce ((acumulador,item) => acumulador + item.precio, 0)
 console.log (totalCarrito)
 
 //* MEDIOS DE PAGO */ 
@@ -78,10 +75,19 @@ function elegirMedioDePago (){
     medioDePago = mediosDePago.find(medio => medio.ident === elegirMedio);
     } while (medioDePago === undefined)
       return medioDePago
-}
+}; 
 
 const medioDePago = elegirMedioDePago ();
 console.log(medioDePago);
+
+function aplicarDescuento (){
+    if (medioDePago > 1){
+        totalCarrito * 0.1
+    }
+};
+
+let totalConDescuento = aplicarDescuento ();
+console.log (totalConDescuento);
 
 
 /* Para próximas entregas:

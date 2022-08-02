@@ -6,13 +6,24 @@
   font-family: winter;
   src: url(../../wintter/Wintter.ttf); }
 
+h1 {
+  color: #e4628d;
+  text-align: center;
+  font-size: 30px;
+}
+
 h2 {
   font-family: titaniaText;
   color: #e4628d;
-  font-size: 30px;
+  font-size: 20px;
   padding: 20px;
   text-align: center;
-  /* text-decoration: underline; */ }
+} 
+
+h4 {
+  font-size: 15px;
+  text-align: center;
+}
 
 h5 {
   text-align: center;
@@ -119,8 +130,10 @@ i {
   .mainProductos span {
     color: #e4628d; }
 
-.cards{
-  background-color: lightgray;
+
+#cardsProductos{
+  width: 100%;
+  font-size: 15px;
 }
 
 @media (min-width: 200px) and (max-width: 420px) {
