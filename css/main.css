@@ -121,6 +121,31 @@ i {
   color: white;
   padding: 5px; }
 
+  .mainQuienes{
+    background-color: white;
+}
+
+.mainQuienes h1{
+    font-family: titaniaText;
+    color:rgb(228, 98, 141);
+    padding: 20px;
+    font-size: 32px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.mainQuienes p{
+    font-family: titaniaText;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: justify;
+    width: 40vw;
+    padding-top: 30px;
+    padding-bottom: 22px;
+    padding-left: 30px;
+    padding-right: 30px;
+}  
+
 .mainProductos {
   font-family: titaniaText;
   font-size: 20px; }
@@ -133,6 +158,58 @@ i {
   .mainProductos span {
     color: #e4628d; }
 
+    .mainFaq h1{
+      font-family: titaniaText;
+      color:rgb(228, 98, 141);
+      padding: 20px;
+      font-size: 32px;
+      text-align: center;
+      text-decoration: underline;
+  }
+  
+  .mainFaq span{
+      color: rgb(228, 98, 141);  
+  }
+  
+  .mainFaq h2{
+      font-family: titaniaText;
+      text-align: center;
+      padding: 20px;
+      font-size: 25px;
+  }
+  
+  .mainFaq a{
+      text-decoration: none;
+      color: rgb(228, 98, 141);
+  }
+  
+  .mainFaq table{
+      border: 2px;
+      border-color: rgb(228, 98, 141);
+      border-style: solid;
+      margin: auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-family: titaniaText;
+      font-size: 20px;
+      font-weight: bold;
+  }
+  
+  .mainFaq p{
+      font-family: titaniaText;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 20px;
+  }
+  
+  .mainFaq li{
+      font-family: titaniaText;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 20px;
+  }    
 
 #cardsProductos{
   width: 100%;
