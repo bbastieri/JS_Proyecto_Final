@@ -1,11 +1,8 @@
-/* ARRAY */
-const carritoCompras = []
-
 /* STOCK */
 const productosEnStock = [
     {id:1, nombre:"Top Olimpia", precio:3000, imagen:"./../images/tops/top_olimpia.jpg"},
-    {id:2, nombre:"Corpiño Heavy Metal", precio:2500, imagen:"./../images/corpiños/corpi_heavymetal.jpg"},
-    {id:3, nombre:"Bombi Heavy Metal", precio:1700, imagen:"./../images/bombis/bombi_heavymetal.jpg"},
+    {id:2, nombre:"Corpiño Heavy Metal", precio:2500, imagen:"./../images/corpiños/corpi_heavymetal.JPG"},
+    {id:3, nombre:"Bombi Heavy Metal", precio:1700, imagen:"./../images/bombis/bombi_heavymetal.JPG"},
     {id:4, nombre:"Portaligas Rebel", precio:2000, imagen:"./../images/portaligas/portaligas_rebel.png"},
     {id:5, nombre:"Body Cherry Bomb", precio:3500, imagen:"./../images/bodys/body_cherry_bomb.png"},
     {id:6, nombre:"Medias Ying Yang", precio:800, imagen:"./../images/medias/media_yinyang_black.jpg"},
@@ -20,7 +17,7 @@ productosEnStock.forEach ((producto) => {
     cards+=`<div>
             <img src='${producto.imagen}' class="imagenCards">
             <h2>${producto.nombre}</h2>
-            <h4>${producto.precio}</h4>
+            <h4>$${producto.precio}</h4>
             <button id="${idBoton}">Agregar al carrito</button>
             <div>`
 });
@@ -34,6 +31,18 @@ productosEnStock.forEach((producto) =>{
     })
 })
 
+/* CARRITO */
+const carritoCompras = []
+
+/* SUMAR PRECIOS */
+function sumarCarrito (producto){
+    const totalCarrito = carritoCompras.reduce ((acumulador,producto) => acumulador + producto.precio, 0)
+    console.log (totalCarrito) 
+    return (totalCarrito)
+}
+
+const totalCarrito = sumarCarrito ();
+console.log (totalCarrito);
 
 /* BORRAR PRODUCTOS */
 function borrarDelCarrito (numeroId){
@@ -45,10 +54,6 @@ function borrarDelCarrito (numeroId){
 }
 /* PRODUCTOS ELIMINADOS */
 borrarDelCarrito(5);
-
-/* SUMAR PRECIOS */
-let totalCarrito = carritoCompras.reduce ((acumulador,item) => acumulador + item.precio, 0)
-console.log (totalCarrito)
 
 //* MEDIOS DE PAGO */ 
 const mediosDePago = [

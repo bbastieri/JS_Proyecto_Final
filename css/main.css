@@ -10,6 +10,7 @@ h1 {
   color: #e4628d;
   text-align: center;
   font-size: 30px;
+  padding: 10px;
 }
 
 h2 {
@@ -23,6 +24,7 @@ h2 {
 h4 {
   font-size: 15px;
   text-align: center;
+  
 }
 
 h5 {
@@ -52,7 +54,8 @@ html {
     font-family: titaniaText;
     font-size: 40px;
     color: #e4628d;
-    align-self: center; }
+    align-self: center; 
+    padding-right: 500px;}
 
 .logoPagina {
   width: 95px;
@@ -138,6 +141,14 @@ i {
 
 .imagenCards{
   height: 200px;
+}
+
+.btn{
+  font-family: titaniaText;
+}
+
+.iconCarrito{
+  color:#e4628d
 }
 
 
