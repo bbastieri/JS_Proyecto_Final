@@ -1,11 +1,45 @@
+/* CARRITO */
+const productosEnCarrito = localStorage.getItem("totalCarrito");
+document.getElementById("btnCarritoTotal").innerHTML = productosEnCarrito;
+const carritoCompras = [];
+
 /* STOCK */
 const productosEnStock = [
-    {id:1, nombre:"Top Olimpia", precio:3000, imagen:"./../images/tops/top_olimpia.jpg"},
-    {id:2, nombre:"Corpiño Heavy Metal", precio:2500, imagen:"./../images/corpiños/corpi_heavymetal.JPG"},
-    {id:3, nombre:"Bombi Heavy Metal", precio:1700, imagen:"./../images/bombis/bombi_heavymetal.JPG"},
-    {id:4, nombre:"Portaligas Rebel", precio:2000, imagen:"./../images/portaligas/portaligas_rebel.png"},
-    {id:5, nombre:"Body Cherry Bomb", precio:3500, imagen:"./../images/bodys/body_cherry_bomb.png"},
-    {id:6, nombre:"Medias Ying Yang", precio:800, imagen:"./../images/medias/media_yinyang_black.jpg"},
+    {
+        id:1, 
+        nombre:"Top Olimpia", 
+        precio:3000, 
+        imagen:"./../images/tops/top_olimpia.jpg"
+    },
+    {
+        id:2, 
+        nombre:"Corpiño Heavy Metal", 
+        precio:2500, 
+        imagen:"./../images/corpiños/corpi_heavymetal.JPG"
+    },
+    {
+        id:3, 
+        nombre:"Bombi Heavy Metal", 
+        precio:1700, imagen:"./../images/bombis/bombi_heavymetal.JPG"
+    },
+    {
+        id:4,
+        nombre:"Portaligas Rebel", 
+        precio:2000, 
+        imagen:"./../images/portaligas/portaligas_rebel.png"
+    },
+    {
+        id:5, 
+        nombre:"Body Cherry Bomb", 
+        precio:3500, 
+        imagen:"./../images/bodys/body_cherry_bomb.png"
+    },
+    {
+        id:6, 
+        nombre:"Medias Ying Yang", 
+        precio:800, 
+        imagen:"./../images/medias/media_yinyang_black.jpg"
+    },
 ];
 
 
@@ -27,22 +61,22 @@ document.getElementById("cardsProductos").innerHTML = cards;
 productosEnStock.forEach((producto) =>{
     const idBoton=`add-cart${producto.id}`
     document.getElementById(idBoton).addEventListener('click', () => {
-        carritoCompras.push(producto)
+        carritoCompras.push(producto);
+        const totalCarrito = carritoCompras.reduce ((acumulador,producto) => acumulador + producto.precio, 0);
+        console.log(totalCarrito); 
+        document.getElementById("btnCarritoTotal").innerHTML = carritoCompras.length + Number(productosEnCarrito);
+        console.log(carritoCompras);
+        localStorage.setItem("totalCarrito", carritoCompras.length);
     })
 })
 
-/* CARRITO */
-const carritoCompras = []
-
 /* SUMAR PRECIOS */
-function sumarCarrito (producto){
+/* function sumarCarrito (){
     const totalCarrito = carritoCompras.reduce ((acumulador,producto) => acumulador + producto.precio, 0)
-    console.log (totalCarrito) 
-    return (totalCarrito)
-}
+    console.log (totalCarrito); 
+    return (totalCarrito);
+} */
 
-const totalCarrito = sumarCarrito ();
-console.log (totalCarrito);
 
 /* BORRAR PRODUCTOS */
 function borrarDelCarrito (numeroId){
@@ -88,9 +122,10 @@ console.log (totalConDescuento);
 
 /* Para próximas entregas:
    - Opción de elegir talles
-   - Verificar stock
    - Buscador
-   - Calculadora de descuento
+   - Calculadora de descuento?
+   - PopUp con productos sumados al carrito y precio total
+   - Botón eliminar producto en popUp 
    */
 
 
