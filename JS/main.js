@@ -1,7 +1,7 @@
 /* CARRITO */
-const productosEnCarrito = localStorage.getItem("totalCarrito");
-document.getElementById("btnCarritoTotal").innerHTML = productosEnCarrito;
-const carritoCompras = [];
+const productosEnCarrito = JSON.parse(localStorage.getItem("totalCarrito"));
+const carritoCompras = productosEnCarrito;
+document.getElementById("btnCarritoTotal").innerHTML = `${carritoCompras.length}`;
 
 /* STOCK */
 const productosEnStock = [
@@ -62,20 +62,12 @@ productosEnStock.forEach((producto) =>{
     const idBoton=`add-cart${producto.id}`
     document.getElementById(idBoton).addEventListener('click', () => {
         carritoCompras.push(producto);
+        localStorage.setItem("totalCarrito", JSON.stringify(carritoCompras));
         const totalCarrito = carritoCompras.reduce ((acumulador,producto) => acumulador + producto.precio, 0);
         console.log(totalCarrito); 
-        document.getElementById("btnCarritoTotal").innerHTML = carritoCompras.length + Number(productosEnCarrito);
-        console.log(carritoCompras);
-        localStorage.setItem("totalCarrito", carritoCompras.length);
+        document.getElementById("btnCarritoTotal").innerHTML = `${carritoCompras.length}`;        
     })
 })
-
-/* SUMAR PRECIOS */
-/* function sumarCarrito (){
-    const totalCarrito = carritoCompras.reduce ((acumulador,producto) => acumulador + producto.precio, 0)
-    console.log (totalCarrito); 
-    return (totalCarrito);
-} */
 
 
 /* BORRAR PRODUCTOS */
@@ -125,7 +117,7 @@ console.log (totalConDescuento);
    - Buscador
    - Calculadora de descuento?
    - PopUp con productos sumados al carrito y precio total
-   - Botón eliminar producto en popUp 
+   - Botón eliminar producto en PopUp 
    */
 
 
