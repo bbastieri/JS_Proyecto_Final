@@ -46,12 +46,12 @@ const productosEnStock = [
 /* CARDS */
 let cards= "";
 
-productosEnStock.forEach ((producto) => {
-    const idBoton=`add-cart${producto.id}` 
+productosEnStock.forEach (({id, nombre, precio, imagen}) => {
+    const idBoton=`add-cart${id}` 
     cards+=`<div>
-            <img src='${producto.imagen}' class="imagenCards">
-            <h2>${producto.nombre}</h2>
-            <h4>$${producto.precio}</h4>
+            <img src='${imagen}' class="imagenCards">
+            <h2>${nombre}</h2>
+            <h4>$${precio}</h4>
             <button id="${idBoton}">Agregar al carrito</button>
             <div>`
 });
