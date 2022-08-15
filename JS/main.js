@@ -1,7 +1,6 @@
 /* CARRITO */
-const productosEnCarrito = JSON.parse(localStorage.getItem("totalCarrito"));
-const carritoCompras = productosEnCarrito;
-document.getElementById("btnCarritoTotal").innerHTML = `${carritoCompras.length}`;
+const productosEnCarrito = JSON.parse(localStorage.getItem("totalCarrito"))??[];
+document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
 
 /* STOCK */
 const productosEnStock = [
@@ -48,11 +47,13 @@ let cards= "";
 
 productosEnStock.forEach (({id, nombre, precio, imagen}) => {
     const idBoton=`add-cart${id}` 
+    const idBotonDelete=`delete-cart${id}`
     cards+=`<div>
             <img src='${imagen}' class="imagenCards">
             <h2>${nombre}</h2>
             <h4>$${precio}</h4>
             <button id="${idBoton}">Agregar al carrito</button>
+            <button id="${idBotonDelete}">Eliminar del carrito</button>
             <div>`
 });
 
@@ -61,25 +62,24 @@ document.getElementById("cardsProductos").innerHTML = cards;
 productosEnStock.forEach((producto) =>{
     const idBoton=`add-cart${producto.id}`
     document.getElementById(idBoton).addEventListener('click', () => {
-        carritoCompras.push(producto);
-        localStorage.setItem("totalCarrito", JSON.stringify(carritoCompras));
-        const totalCarrito = carritoCompras.reduce ((acumulador,producto) => acumulador + producto.precio, 0);
+        productosEnCarrito.push(producto);
+        localStorage.setItem("totalCarrito", JSON.stringify(productosEnCarrito));
+        const totalCarrito = productosEnCarrito.reduce ((acumulador,producto) => acumulador + producto.precio, 0);
         console.log(totalCarrito); 
-        document.getElementById("btnCarritoTotal").innerHTML = `${carritoCompras.length}`;        
+        document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;        
     })
 })
 
-
 /* BORRAR PRODUCTOS */
-function borrarDelCarrito (numeroId){
-    const productoAEliminar = carritoCompras.findIndex((producto) => producto.id === numeroId)
-    if (productoAEliminar !== -1){
-        carritoCompras.splice (productoAEliminar,1);
-    }
-    console.log (carritoCompras)
-}
-/* PRODUCTOS ELIMINADOS */
-borrarDelCarrito(5);
+productosEnStock.forEach((producto) =>{
+    const idBotonDelete=`delete-cart${producto.id}`
+    document.getElementById(idBotonDelete).addEventListener('click', () => {
+    localStorage.setItem("totalCartito", JSON.stringify(productosEnCarrito));
+    const productoAEliminar = productosEnCarrito.splice (productoAEliminar,1);
+    console.log (productosEnCarrito);
+    document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
+    })
+})
 
 //* MEDIOS DE PAGO */ 
 const mediosDePago = [
