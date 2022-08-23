@@ -43,8 +43,10 @@ document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.len
 ]; */
 
 const cargarProductos = async () => {
-  const response = await fetch ('productos.json');
-  return await response.json();
+  const response = await fetch ('../productos.json');
+  const responseFinal = await response.json()
+  console.log(responseFinal)
+  return responseFinal
 };
 
 const productosEnStock = cargarProductos();
@@ -172,5 +174,5 @@ console.log(totalConDescuento); */
    - Opción de elegir talles
    - Buscador
    - Calculadora de descuento?
-   - PopUp con productos sumados al carrito y precio total
+   - Agregar precio total al popUp
    */
