@@ -3,7 +3,7 @@ const productosEnCarrito =JSON.parse(localStorage.getItem("totalCarrito")) ?? []
 document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
 
 /* STOCK */
-const productosEnStock = [
+/*  const productosEnStock = [
   {
     id: 1,
     nombre: "Top Olimpia",
@@ -40,7 +40,17 @@ const productosEnStock = [
     precio: 800,
     imagen: "./../images/medias/media_yinyang_black.jpg",
   },
-];
+]; */
+
+const productosEnStock = cargarProductos();
+
+const cargarProductos = async () => {
+  const response = await fetch ('productos.json');
+  return await response.json();
+};
+
+console.log(productosEnStock)
+
 
 /* CARDS */
 let cards = "";
