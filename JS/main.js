@@ -42,14 +42,14 @@ document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.len
   },
 ]; */
 
-const productosEnStock = cargarProductos();
-
 const cargarProductos = async () => {
   const response = await fetch ('productos.json');
   return await response.json();
 };
 
-console.log(productosEnStock)
+const productosEnStock = cargarProductos();
+
+console.log(productosEnStock);
 
 
 /* CARDS */
@@ -98,7 +98,6 @@ productosEnStock.forEach((producto) => {
 productosEnStock.forEach((producto) => {
   const idBotonDelete = `delete-cart${producto.id}`;
   document.getElementById(idBotonDelete).addEventListener("click", () => {
-    localStorage.setItem("totalCarrito", JSON.stringify(productosEnCarrito));
     console.log(productosEnCarrito + "carrito");
     const productoAEliminar = productosEnCarrito.findIndex(
       (productos) => productos.id === producto.id
@@ -107,6 +106,7 @@ productosEnStock.forEach((producto) => {
     if (productoAEliminar !== -1) {
       productosEnCarrito.splice(productoAEliminar, 1);
     }
+    localStorage.setItem("totalCarrito", JSON.stringify(productosEnCarrito));
     console.log(productosEnCarrito);
     document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
     Toastify({
