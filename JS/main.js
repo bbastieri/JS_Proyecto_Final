@@ -9,7 +9,8 @@ const cargarProductos = async () => {
   const responseFinal = await response.json();
   crearCards(responseFinal);
   agregarProducto(responseFinal);
-  borrarProducto(responseFinal)
+  borrarProducto(responseFinal);
+  renderCarrito(responseFinal)
 };
 
 const productosEnStock = cargarProductos();
@@ -60,6 +61,7 @@ function agregarProducto(productosEnStock) {
         background: "rgb(228, 98, 141)",
       },
     }).showToast();
+    renderCarrito();
   });
  });
 }
@@ -88,6 +90,7 @@ function borrarProducto(productosEnStock) {
           background: "rgb(228, 98, 141)",
         },
       }).showToast();
+      renderCarrito();
   });
  });
 }
@@ -95,7 +98,7 @@ function borrarProducto(productosEnStock) {
 /* TOTAL CARRITO POPUP */
 let cardsPopUp = "";
 
-productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
+function renderCarrito() {productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
     const idBotonDelete = `delete-cart${id}`;
     cardsPopUp += `<div>
               <img src='${imagen}' class="imagenCards">
@@ -103,9 +106,8 @@ productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
               <h4>$${precio}</h4>
               <div>`;             
   });
-
-document.getElementById("productosAgregados").innerHTML = cardsPopUp;
-
+  document.getElementById("productosAgregados").innerHTML = cardsPopUp;
+}
 
 //* MEDIOS DE PAGO */
 /* const mediosDePago = [
