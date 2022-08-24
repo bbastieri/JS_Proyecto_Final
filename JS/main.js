@@ -3,7 +3,6 @@ const productosEnCarrito =JSON.parse(localStorage.getItem("totalCarrito")) ?? []
 document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
 
 /* FETCH .JSON */
-
 const cargarProductos = async () => {
   const response = await fetch ('../productos.json');
   const responseFinal = await response.json();
@@ -14,7 +13,6 @@ const cargarProductos = async () => {
 };
 
 const productosEnStock = cargarProductos();
-
 console.log(productosEnStock);
 
 
@@ -49,7 +47,8 @@ function agregarProducto(productosEnStock) {
       (acumulador, producto) => acumulador + producto.precio,
       0
     );
-    console.log(totalCarrito);
+    console.log("Total $ " + totalCarrito);
+    console.log(productosEnCarrito);
     document.getElementById(
       "btnCarritoTotal"
     ).innerHTML = `${productosEnCarrito.length}`;
@@ -61,7 +60,7 @@ function agregarProducto(productosEnStock) {
         background: "rgb(228, 98, 141)",
       },
     }).showToast();
-    renderCarrito();
+    renderCarrito(productosEnCarrito);
   });
  });
 }
@@ -71,7 +70,6 @@ function borrarProducto(productosEnStock) {
   productosEnStock.forEach((producto) => {
   const idBotonDelete = `delete-cart${producto.id}`;
   document.getElementById(idBotonDelete).addEventListener("click", () => {
-    console.log(productosEnCarrito + "carrito");
     const productoAEliminar = productosEnCarrito.findIndex(
       (productos) => productos.id === producto.id
     );
@@ -90,7 +88,7 @@ function borrarProducto(productosEnStock) {
           background: "rgb(228, 98, 141)",
         },
       }).showToast();
-      renderCarrito();
+      renderCarrito(productosEnCarrito);
   });
  });
 }
@@ -104,10 +102,12 @@ function renderCarrito() {productosEnCarrito.forEach(({id, nombre, precio, image
               <img src='${imagen}' class="imagenCards">
               <h2>${nombre}</h2>
               <h4>$${precio}</h4>
-              <div>`;             
+              </div>`;             
   });
   document.getElementById("productosAgregados").innerHTML = cardsPopUp;
 }
+
+
 
 //* MEDIOS DE PAGO */
 /* const mediosDePago = [
