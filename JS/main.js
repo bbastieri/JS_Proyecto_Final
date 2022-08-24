@@ -95,7 +95,6 @@ function borrarProducto(productosEnStock) {
 /* TOTAL CARRITO POPUP */
 let cardsPopUp = "";
 
-
 productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
     const idBotonDelete = `delete-cart${id}`;
     cardsPopUp += `<div>
@@ -104,7 +103,7 @@ productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
               <h4>$${precio}</h4>
               <div>`;             
   });
-  
+
 document.getElementById("productosAgregados").innerHTML = cardsPopUp;
 
 
