@@ -36,7 +36,6 @@ document.getElementById("cardsProductos").innerHTML = cards;
 
 /* AGREGAR AL CARRITO */
 
-
 function agregarProducto(productosEnStock) {
   productosEnStock.forEach((producto) => {
    const idBoton = `add-cart${producto.id}`;
@@ -49,9 +48,7 @@ function agregarProducto(productosEnStock) {
     );
     console.log("Total $ " + totalCarrito);
     console.log(productosEnCarrito);
-    document.getElementById(
-      "btnCarritoTotal"
-    ).innerHTML = `${productosEnCarrito.length}`;
+    document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
     Toastify({
       text: "Agregaste " + `${producto.nombre}` + " al carrito",
       duration: 3000,
@@ -93,8 +90,9 @@ function borrarProducto(productosEnStock) {
  });
 }
 
-/* TOTAL CARRITO POPUP */
+/* CARRITO POPUP */
 let cardsPopUp = "";
+let totalCarritoPopUp ="";
 
 function renderCarrito() {productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
     const idBotonDelete = `delete-cart${id}`;
@@ -104,8 +102,19 @@ function renderCarrito() {productosEnCarrito.forEach(({id, nombre, precio, image
               <h4>$${precio}</h4>
               </div>`;             
   });
+    const totalCarrito = productosEnCarrito.reduce(
+    (acumulador, producto) => acumulador + producto.precio,
+    0
+    );
+    totalCarritoPopUp +=`<div>
+                      <h2>TOTAL: </h2>  
+                      <h4>$${totalCarrito}</h4>
+                      </div>`
   document.getElementById("productosAgregados").innerHTML = cardsPopUp;
+  document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;
 }
+
+
 
 
 
