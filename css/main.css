@@ -221,6 +221,11 @@ i {
   height: 200px;
 }
 
+.imagenCardsPopup{
+  height: 100px;
+  width: 100px;
+}
+
 .btn{
   font-family: titaniaText;
   color: white;

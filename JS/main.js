@@ -9,7 +9,8 @@ const cargarProductos = async () => {
   crearCards(responseFinal);
   agregarProducto(responseFinal);
   borrarProducto(responseFinal);
-  renderCarrito(responseFinal)
+  renderCarrito(responseFinal);
+  renderTotalCarrito(responseFinal);
 };
 
 const productosEnStock = cargarProductos();
@@ -43,8 +44,7 @@ function agregarProducto(productosEnStock) {
     productosEnCarrito.push(producto);
     localStorage.setItem("totalCarrito", JSON.stringify(productosEnCarrito));
     const totalCarrito = productosEnCarrito.reduce(
-      (acumulador, producto) => acumulador + producto.precio,
-      0
+      (acumulador, producto) => acumulador + producto.precio, 0
     );
     console.log("Total $ " + totalCarrito);
     console.log(productosEnCarrito);
@@ -57,7 +57,8 @@ function agregarProducto(productosEnStock) {
         background: "rgb(228, 98, 141)",
       },
     }).showToast();
-    renderCarrito(productosEnCarrito);
+    renderCarrito();
+    renderTotalCarrito();
   });
  });
 }
@@ -70,7 +71,7 @@ function borrarProducto(productosEnStock) {
     const productoAEliminar = productosEnCarrito.findIndex(
       (productos) => productos.id === producto.id
     );
-    console.log(productoAEliminar + "id producto a eliminar");
+    console.log(productoAEliminar + "posición producto a eliminar");
     if (productoAEliminar !== -1) {
       productosEnCarrito.splice(productoAEliminar, 1);
     }
@@ -85,33 +86,39 @@ function borrarProducto(productosEnStock) {
           background: "rgb(228, 98, 141)",
         },
       }).showToast();
-      renderCarrito(productosEnCarrito);
+      renderCarrito();
+      renderTotalCarrito();
   });
  });
 }
 
 /* CARRITO POPUP */
-let cardsPopUp = "";
-let totalCarritoPopUp ="";
 
-function renderCarrito() {productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
-    const idBotonDelete = `delete-cart${id}`;
+function renderCarrito() {
+  let cardsPopUp = "";
+  productosEnCarrito.forEach(({nombre, precio, imagen}) => {
     cardsPopUp += `<div>
-              <img src='${imagen}' class="imagenCards">
+              <img src='${imagen}' class="imagenCardsPopup">
               <h2>${nombre}</h2>
               <h4>$${precio}</h4>
-              </div>`;             
+              </div>`;                       
   });
-    const totalCarrito = productosEnCarrito.reduce(
-    (acumulador, producto) => acumulador + producto.precio,
-    0
+  document.getElementById("productosAgregados").innerHTML = cardsPopUp;
+}
+
+/* TOTAL CARRITO POPUP */
+
+let totalCarritoPopUp ="";
+
+function renderTotalCarrito() {
+  const totalCarrito = productosEnCarrito.reduce(
+    (acumulador, producto) => acumulador + producto.precio, 0
     );
-    totalCarritoPopUp +=`<div>
+    totalCarritoPopUp =`<div>
                       <h2>TOTAL: </h2>  
                       <h4>$${totalCarrito}</h4>
-                      </div>`
-  document.getElementById("productosAgregados").innerHTML = cardsPopUp;
-  document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;
+                      </div>`;
+  document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;  
 }
 
 
@@ -156,5 +163,4 @@ console.log(totalConDescuento); */
    - Opción de elegir talles
    - Buscador
    - Calculadora de descuento?
-   - Agregar precio total al popUp
    */
