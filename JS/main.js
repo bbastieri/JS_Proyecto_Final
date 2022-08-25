@@ -122,9 +122,6 @@ function renderTotalCarrito() {
 }
 
 
-
-
-
 //* MEDIOS DE PAGO */
 /* const mediosDePago = [
   { ident: 1, medio: "MercadoPago", descuento: 0 },
