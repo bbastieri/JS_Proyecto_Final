@@ -1,8 +1,17 @@
 [
-    {"id": 1, "nombre": "Top Olimpia", "precio": 3000, "imagen": "./../images/tops/top_olimpia.jpg"},
-    {"id": 2, "nombre": "Corpiño Heavy Metal", "precio": 2500, "imagen": "./../images/corpiños/corpi_heavymetal.JPG"},
-    {"id": 3, "nombre": "Bombi Heavy Metal", "precio": 1700, "imagen": "./../images/bombis/bombi_heavymetal.JPG"},
-    {"id": 4, "nombre": "Portaligas Rebel", "precio": 2000, "imagen": "./../images/portaligas/portaligas_rebel.png"},
-    {"id": 5, "nombre": "Body Cherry Bomb", "precio": 3500, "imagen": "./../images/bodys/body_cherry_bomb.png"},
-    {"id": 6, "nombre": "Medias Ying Yang", "precio": 800, "imagen": "./../images/medias/media_yinyang_black.jpg"}
+    {"id": 1, "nombre": "Top Olimpia", "precio": 4000, "categoria":"Tops", "imagen": "./../images/tops/top_olimpia.jpg"},
+    {"id": 2, "nombre": "Corpiño Heavy Metal", "precio": 2500, "categoria":"Corpiños", "imagen": "./../images/corpiños/corpi_heavymetal.JPG"},
+    {"id": 3, "nombre": "Bombi Heavy Metal", "precio": 1700, "categoria":"Bombis", "imagen": "./../images/bombis/bombi_heavymetal.JPG"},
+    {"id": 4, "nombre": "Portaligas Rebel", "precio": 2000, "categoria":"Portaligas", "imagen": "./../images/portaligas/portaligas_rebel.png"},
+    {"id": 5, "nombre": "Body Cherry Bomb", "precio": 3500, "categoria":"Bodys", "imagen": "./../images/bodys/body_cherry_bomb.png"},
+    {"id": 6, "nombre": "Medias Ying Yang Black", "precio": 800, "categoria":"Medias", "imagen": "./../images/medias/media_yinyang_black.jpg"},
+    {"id": 7, "nombre": "Body Dominatrix", "precio": 4500, "categoria":"Bodys", "imagen": "./../images/bodys/body_dominatrix.png"},
+    {"id": 8, "nombre": "Bombi Wild One", "precio": 1800, "categoria":"Bombis", "imagen": "./../images/bombis/bombi_wildone.JPG"},
+    {"id": 9, "nombre": "Corpiño Fetish", "precio": 2500, "categoria":"Corpiños", "imagen": "./../images/corpiños/corpi_fetish.png"},
+    {"id": 10, "nombre": "Portaligas Bad", "precio": 2000, "categoria":"Portaligas", "imagen": "./../images/portaligas/portaligas_mala_reputacion.png"},
+    {"id": 11, "nombre": "Top Nix", "precio": 3500, "categoria":"Tops", "imagen": "./../images/tops/top_nix.png"},
+    {"id": 12, "nombre": "Bombi Pixie", "precio": 1500, "categoria":"Bombis", "imagen": "./../images/bombis/bombi_pixie.jpg"},
+    {"id": 13, "nombre": "Corpiño Pixie", "precio": 3000, "categoria":"Corpiños", "imagen": "./../images/corpiños/corpi_pixie.jpg"},
+    {"id": 14, "nombre": "Volados New Moon", "precio": 2000, "categoria":"Bombis", "imagen": "./../images/bombis/volados_newmoon.jpg"},
+    {"id": 15, "nombre": "Corpiño Ramona", "precio": 3000, "categoria":"Corpiños", "imagen": "./../images/corpiños/corpi_ramona.JPG"}
   ]
