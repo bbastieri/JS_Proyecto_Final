@@ -5,7 +5,7 @@ document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.len
 
 /* FETCH .JSON */
 
-const cargarProductos = async () => {
+const cargarProductos = async (categoria) => {
   const response = await fetch ('../productos.json');
   const responseFinal = await response.json();
   crearCards(responseFinal);
@@ -13,7 +13,8 @@ const cargarProductos = async () => {
   borrarProducto(responseFinal);
   renderCarrito(responseFinal);
   renderTotalCarrito(responseFinal);
-  filtrarPorCategoria(responseFinal);
+  filtrarPorCategoria(responseFinal,categoria);
+  return responseFinal;
 };
 
 cargarProductos();
@@ -129,14 +130,8 @@ function renderTotalCarrito() {
 /* FILTRO POR CATEGORÍAS */
 
 function filtrarPorCategoria (cargarProductos,categoria) {
-  document.getElementById("bodys").addEventListener("click", () => {
-    const cargarProductos = async () => {
-      const response = await fetch ('../productos.json');
-      const responseFinal = await response.json();
-      return responseFinal;
-    };  
+  console.log(cargarProductos);
   const productosPorCategoria= cargarProductos.filter(producto => producto.categoria === categoria);
- 
   productosPorCategoria.forEach(({ id, nombre, precio, imagen}) => {
     const idBoton = `add-cart${id}`;
     const idBotonDelete = `delete-cart${id}`;
@@ -150,7 +145,6 @@ function filtrarPorCategoria (cargarProductos,categoria) {
   });  
   console.log(productosPorCategoria);
   document.getElementById("cardsProductos").innerHTML = cards;
-  });
 }; 
 
 //* MEDIOS DE PAGO */
