@@ -1,8 +1,10 @@
 /* CARRITO */
+
 const productosEnCarrito =JSON.parse(localStorage.getItem("totalCarrito")) ?? [];
 document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.length}`;
 
 /* FETCH .JSON */
+
 const cargarProductos = async () => {
   const response = await fetch ('../productos.json');
   const responseFinal = await response.json();
@@ -11,34 +13,36 @@ const cargarProductos = async () => {
   borrarProducto(responseFinal);
   renderCarrito(responseFinal);
   renderTotalCarrito(responseFinal);
+  filtrarPorCategoria(responseFinal);
 };
 
-const productosEnStock = cargarProductos();
-console.log(productosEnStock);
-
+cargarProductos();
+console.log(cargarProductos() +"hola");
 
 /* CARDS */
+
 let cards = "";
 
-function crearCards(productosEnStock){
- productosEnStock.forEach(({ id, nombre, precio, imagen }) => {
+function crearCards(cargarProductos){
+ cargarProductos.forEach(({ id, nombre, precio, imagen }) => {
   const idBoton = `add-cart${id}`;
   const idBotonDelete = `delete-cart${id}`;
   cards += `<div>
             <img src='${imagen}' class="imagenCards">
             <h2>${nombre}</h2>
             <h4>$${precio}</h4>
-            <button id="${idBoton}">Agregar al carrito</button>
-            <button id="${idBotonDelete}">Eliminar del carrito</button>
+            <button id="${idBoton}">Agregar</button>
+            <button id="${idBotonDelete}">Eliminar</button>
             <div>`;
 });
 document.getElementById("cardsProductos").innerHTML = cards;
 }
 
+
 /* AGREGAR AL CARRITO */
 
-function agregarProducto(productosEnStock) {
-  productosEnStock.forEach((producto) => {
+function agregarProducto(cargarProductos) {
+  cargarProductos.forEach((producto) => {
    const idBoton = `add-cart${producto.id}`;
    document.getElementById(idBoton).addEventListener("click", () => {
     productosEnCarrito.push(producto);
@@ -64,8 +68,9 @@ function agregarProducto(productosEnStock) {
 }
 
 /* BORRAR PRODUCTOS */
-function borrarProducto(productosEnStock) {
-  productosEnStock.forEach((producto) => {
+
+function borrarProducto(cargarProductos) {
+  cargarProductos.forEach((producto) => {
   const idBotonDelete = `delete-cart${producto.id}`;
   document.getElementById(idBotonDelete).addEventListener("click", () => {
     const productoAEliminar = productosEnCarrito.findIndex(
@@ -96,7 +101,7 @@ function borrarProducto(productosEnStock) {
 
 function renderCarrito() {
   let cardsPopUp = "";
-  productosEnCarrito.forEach(({nombre, precio, imagen}) => {
+  productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
     cardsPopUp += `<div>
               <img src='${imagen}' class="imagenCardsPopup">
               <h2>${nombre}</h2>
@@ -118,9 +123,35 @@ function renderTotalCarrito() {
                       <h2>TOTAL: </h2>  
                       <h4>$${totalCarrito}</h4>
                       </div>`;
-  document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;  
+  document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;
 }
 
+/* FILTRO POR CATEGORÍAS */
+
+function filtrarPorCategoria (cargarProductos,categoria) {
+  document.getElementById("bodys").addEventListener("click", () => {
+    const cargarProductos = async () => {
+      const response = await fetch ('../productos.json');
+      const responseFinal = await response.json();
+      return responseFinal;
+    };  
+  const productosPorCategoria= cargarProductos.filter(producto => producto.categoria === categoria);
+ 
+  productosPorCategoria.forEach(({ id, nombre, precio, imagen}) => {
+    const idBoton = `add-cart${id}`;
+    const idBotonDelete = `delete-cart${id}`;
+    cards += `<div>
+              <img src='${imagen}' class="imagenCards">
+              <h2>${nombre}</h2>
+              <h4>$${precio}</h4>
+              <button id="${idBoton}">Agregar</button>
+              <button id="${idBotonDelete}">Eliminar</button>
+              <div>`;
+  });  
+  console.log(productosPorCategoria);
+  document.getElementById("cardsProductos").innerHTML = cards;
+  });
+}; 
 
 //* MEDIOS DE PAGO */
 /* const mediosDePago = [
