@@ -9,6 +9,7 @@
 h1 {
   color: #e4628d;
   text-align: center;
+  font-family: titaniaText;
   font-size: 30px;
   padding: 10px;
 }
@@ -33,7 +34,12 @@ h5 {
 }
 
 button{
-  background-color: grey;
+  background-color:grey;
+  font-family: titaniaText;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: none;
 }
 
 * {
@@ -122,95 +128,6 @@ i {
   color: white;
   padding: 5px; }
 
-  .mainQuienes{
-    background-color: white;
-}
-
-.mainQuienes h1{
-    font-family: titaniaText;
-    color:rgb(228, 98, 141);
-    padding: 20px;
-    font-size: 32px;
-    text-align: center;
-    text-decoration: underline;
-}
-
-.mainQuienes p{
-    font-family: titaniaText;
-    font-size: 18px;
-    font-weight: bold;
-    text-align: justify;
-    width: 40vw;
-    padding-top: 30px;
-    padding-bottom: 22px;
-    padding-left: 30px;
-    padding-right: 30px;
-}  
-
-.mainProductos {
-  font-family: titaniaText;
-  font-size: 20px; }
-  .mainProductos li {
-    list-style: none;
-    text-decoration: underline;
-    text-decoration-color: #e4628d;
-    padding-top: 10px;
-    padding-bottom: 5px; }
-  .mainProductos span {
-    color: #e4628d; }
-
-    .mainFaq h1{
-      font-family: titaniaText;
-      color:rgb(228, 98, 141);
-      padding: 20px;
-      font-size: 32px;
-      text-align: center;
-      text-decoration: underline;
-  }
-  
-  .mainFaq span{
-      color: rgb(228, 98, 141);  
-  }
-  
-  .mainFaq h2{
-      font-family: titaniaText;
-      text-align: center;
-      padding: 20px;
-      font-size: 25px;
-  }
-  
-  .mainFaq a{
-      text-decoration: none;
-      color: rgb(228, 98, 141);
-  }
-  
-  .mainFaq table{
-      border: 2px;
-      border-color: rgb(228, 98, 141);
-      border-style: solid;
-      margin: auto;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      font-family: titaniaText;
-      font-size: 20px;
-      font-weight: bold;
-  }
-  
-  .mainFaq p{
-      font-family: titaniaText;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      padding-bottom: 20px;
-  }
-  
-  .mainFaq li{
-      font-family: titaniaText;
-      font-size: 16px;
-      font-weight: bold;
-      text-align: center;
-      padding-bottom: 20px;
-  }    
 
 #cardsProductos{
   width: 100%;
@@ -218,8 +135,8 @@ i {
   }
 
 .imagenCards{
-  height: 175px;
-  width: 175px;
+  height: 150px;
+  width: 150px;
 }
 
 .imagenCardsPopup{
@@ -236,9 +153,14 @@ i {
   color:#e4628d
 }
 
-.btn-primary{
+.btn-secondary{
   background-color: #e4628d;
   border-color: #e4628d;
+  color: black;
+}
+
+.navbar-nav{
+  align-items: center;
 }
 
 

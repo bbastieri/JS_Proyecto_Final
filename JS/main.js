@@ -5,26 +5,40 @@ document.getElementById("btnCarritoTotal").innerHTML = `${productosEnCarrito.len
 
 /* FETCH .JSON */
 
-const cargarProductos = async (categoria) => {
-  const response = await fetch ('../productos.json');
-  const responseFinal = await response.json();
+const inicializar = async () => {
+  const productos = await fetchProductos();
+  generarInterfaz(productos);
+  return productos;
+};
+
+const generarInterfaz = (responseFinal) => {
   crearCards(responseFinal);
   agregarProducto(responseFinal);
   borrarProducto(responseFinal);
   renderCarrito(responseFinal);
   renderTotalCarrito(responseFinal);
-  filtrarPorCategoria(responseFinal,categoria);
-  return responseFinal;
-};
+}
 
-cargarProductos();
-console.log(cargarProductos() +"hola");
+const fetchProductos = async () => {
+  const response = await fetch ('../productos.json');
+  const responseFinal = await response.json();
+  return responseFinal
+}
+
+/* FILTRO POR CATEGORÍAS */
+
+async function filtrarPorCategoria (categoria){
+  const productos = await fetchProductos();
+  const productosPorCategoria= productos.filter(producto => producto.categoria === categoria);
+  generarInterfaz(productosPorCategoria);
+}; 
+
+inicializar();
 
 /* CARDS */
 
-let cards = "";
-
 function crearCards(cargarProductos){
+  let cards = "";
  cargarProductos.forEach(({ id, nombre, precio, imagen }) => {
   const idBoton = `add-cart${id}`;
   const idBotonDelete = `delete-cart${id}`;
@@ -37,7 +51,7 @@ function crearCards(cargarProductos){
             <div>`;
 });
 document.getElementById("cardsProductos").innerHTML = cards;
-}
+};
 
 
 /* AGREGAR AL CARRITO */
@@ -66,7 +80,7 @@ function agregarProducto(cargarProductos) {
     renderTotalCarrito();
   });
  });
-}
+};
 
 /* BORRAR PRODUCTOS */
 
@@ -96,21 +110,23 @@ function borrarProducto(cargarProductos) {
       renderTotalCarrito();
   });
  });
-}
+};
 
 /* CARRITO POPUP */
 
 function renderCarrito() {
   let cardsPopUp = "";
   productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
+    const idBotonDelete = `delete-cart${id}`;
     cardsPopUp += `<div>
               <img src='${imagen}' class="imagenCardsPopup">
               <h2>${nombre}</h2>
               <h4>$${precio}</h4>
+              <button id="${idBotonDelete}">Eliminar</button>
               </div>`;                       
   });
   document.getElementById("productosAgregados").innerHTML = cardsPopUp;
-}
+};
 
 /* TOTAL CARRITO POPUP */
 
@@ -125,27 +141,8 @@ function renderTotalCarrito() {
                       <h4>$${totalCarrito}</h4>
                       </div>`;
   document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;
-}
+};
 
-/* FILTRO POR CATEGORÍAS */
-
-function filtrarPorCategoria (cargarProductos,categoria) {
-  console.log(cargarProductos);
-  const productosPorCategoria= cargarProductos.filter(producto => producto.categoria === categoria);
-  productosPorCategoria.forEach(({ id, nombre, precio, imagen}) => {
-    const idBoton = `add-cart${id}`;
-    const idBotonDelete = `delete-cart${id}`;
-    cards += `<div>
-              <img src='${imagen}' class="imagenCards">
-              <h2>${nombre}</h2>
-              <h4>$${precio}</h4>
-              <button id="${idBoton}">Agregar</button>
-              <button id="${idBotonDelete}">Eliminar</button>
-              <div>`;
-  });  
-  console.log(productosPorCategoria);
-  document.getElementById("cardsProductos").innerHTML = cards;
-}; 
 
 //* MEDIOS DE PAGO */
 /* const mediosDePago = [
@@ -184,5 +181,4 @@ console.log(totalConDescuento); */
 /* Para próximas entregas:
    - Opción de elegir talles
    - Buscador
-   - Calculadora de descuento?
    */
