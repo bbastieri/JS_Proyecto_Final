@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0; }
+
 @font-face {
   font-family: titaniaText;
   src: url(../titania/Titania-Regular.ttf); }
@@ -19,12 +23,12 @@ h2 {
   color: #e4628d;
   font-size: 20px;
   padding: 20px;
-  text-align: center;
+ /*  text-align: center; */
 } 
 
 h4 {
   font-size: 15px;
-  text-align: center;
+ /*  text-align: center; */
   font-family: titaniaText;
 }
 
@@ -34,17 +38,13 @@ h5 {
 }
 
 button{
-  background-color:grey;
+  background-color: rgba(128, 128, 128, 0.459);
   font-family: titaniaText;
   padding: 5px;
   margin-left: 10px;
   margin-right: 10px;
   border: none;
 }
-
-* {
-  margin: 0;
-  padding: 0; }
 
 ul {
   list-style: none; }
@@ -69,6 +69,9 @@ html {
   height: 95px; }
 
 .navbar {
+  width: auto;
+  display: flex;
+  align-items: center;
   background-color: black; }
   .navbar-brand {
     font-family: titaniaText;
@@ -79,8 +82,6 @@ html {
     text-decoration-color: white; }
     .navbar-brand:hover {
       transform: scale(1.2); }
-  .navbar-toggler {
-    border-color: #e4628d !important; }
   .navbar li {
     transition: transform 0.7s; }
     .navbar li:hover {
@@ -137,6 +138,7 @@ i {
 .imagenCards{
   height: 150px;
   width: 150px;
+  align-self: center;
 }
 
 .imagenCardsPopup{
@@ -159,23 +161,30 @@ i {
   color: black;
 }
 
-.navbar-nav{
+#cardsProductos{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cardTest{
+  padding-bottom: 25px;
+  display: grid;
   align-items: center;
+  text-align: center;
+}
+
+.separador{
+  border-top: 2px solid grey;
 }
 
 
 @media (min-width: 200px) and (max-width: 420px) {
   .tituloPagina h1 {
-    font-size: 25px; }
-  .mainQuienes p {
-    width: 90vw;
-    padding: 5px; }
+    font-size: 25px;}
   .footerPaginas {
     font-size: 14px; } }
 
 @media (min-width: 420px) and (max-width: 768px) {
   .tituloPagina h1 {
     font-size: 40px; }
-  .mainQuienes p {
-    width: 90vw;
-    padding: 5px; } }
+ }

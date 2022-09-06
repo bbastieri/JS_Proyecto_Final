@@ -42,13 +42,17 @@ function crearCards(cargarProductos){
  cargarProductos.forEach(({ id, nombre, precio, imagen }) => {
   const idBoton = `add-cart${id}`;
   const idBotonDelete = `delete-cart${id}`;
-  cards += `<div>
+  cards += `<div class="cardTest">
+            <div>
             <img src='${imagen}' class="imagenCards">
+            </div>
             <h2>${nombre}</h2>
             <h4>$${precio}</h4>
+            <div>
             <button id="${idBoton}">Agregar</button>
             <button id="${idBotonDelete}">Eliminar</button>
-            <div>`;
+            </div>
+            </div>`;
 });
 document.getElementById("cardsProductos").innerHTML = cards;
 };
@@ -117,12 +121,12 @@ function borrarProducto(cargarProductos) {
 function renderCarrito() {
   let cardsPopUp = "";
   productosEnCarrito.forEach(({id, nombre, precio, imagen}) => {
-    const idBotonDelete = `delete-cart${id}`;
-    cardsPopUp += `<div>
+    cardsPopUp += `<div class="cardTest">
+              <div>
               <img src='${imagen}' class="imagenCardsPopup">
+              </div>
               <h2>${nombre}</h2>
               <h4>$${precio}</h4>
-              <button id="${idBotonDelete}">Eliminar</button>
               </div>`;                       
   });
   document.getElementById("productosAgregados").innerHTML = cardsPopUp;
@@ -136,49 +140,9 @@ function renderTotalCarrito() {
   const totalCarrito = productosEnCarrito.reduce(
     (acumulador, producto) => acumulador + producto.precio, 0
     );
-    totalCarritoPopUp =`<div>
+    totalCarritoPopUp =`<div class="cardTest separador">
                       <h2>TOTAL: </h2>  
                       <h4>$${totalCarrito}</h4>
                       </div>`;
   document.getElementById("totalCompra").innerHTML = totalCarritoPopUp;
 };
-
-
-//* MEDIOS DE PAGO */
-/* const mediosDePago = [
-  { ident: 1, medio: "MercadoPago", descuento: 0 },
-  { ident: 2, medio: "Transferencia Bancaria", descuento: 0.1 },
-  { ident: 3, medio: "Depósito Bancario", descuento: 0.1 },
-]; */
-
-/* ELEGIR MEDIO DE PAGO */
-/* function elegirMedioDePago() {
-  let medioDePago;
-  do {
-    const elegirMedio = parseInt(
-      prompt(
-        "Para elegir cómo pagar, debés ingresar 1 por MercadoPago, 2 para Transferencia y 3 para depósito!"
-      )
-    );
-    console.log(elegirMedio);
-    medioDePago = mediosDePago.find((medio) => medio.ident === elegirMedio);
-  } while (medioDePago === undefined);
-  return medioDePago;
-}
-
-const medioDePago = elegirMedioDePago();
-console.log(medioDePago);
-
-function aplicarDescuento() {
-  if (medioDePago > 1) {
-    totalCarrito * 0.1;
-  }
-} */
-
-/* let totalConDescuento = aplicarDescuento();
-console.log(totalConDescuento); */
-
-/* Para próximas entregas:
-   - Opción de elegir talles
-   - Buscador
-   */
